@@ -50,12 +50,13 @@ from pydantic import BaseModel, Field
 load_dotenv()
 
 # ── API Keys ──────────────────────────────────────────────────────────────────
-os.environ["OPENROUTER_API_KEY"] = " "    # ← replace
+# The key is now securely loaded from the .env file
+# os.environ["OPENROUTER_API_KEY"] = "..."    
 
 # ── Neon DB connection string ─────────────────────────────────────────────────
 # Get from: https://console.neon.tech → your project → Connection Details
 # Format: postgresql://user:password@ep-xxxx.region.aws.neon.tech/dbname?sslmode=require
-NEON_DSN = "postgresql://neondb_owner:npg_ugXV0cZTGpC8@ep-broad-leaf-aqz3ehl8.c-8.us-east-1.aws.neon.tech/neondb?sslmode=require"
+NEON_DSN = os.environ.get("NEON_DSN")
 
 
 # ============================================================
@@ -517,7 +518,7 @@ Decision rules:
    - Check if you recently asked them a final confirmation (e.g., "Is there anything else you'd like to share, or should I consult the Doctor?").
    - If you HAVE NOT asked yet: Warmly and naturally ask if they want to share more, or if they are ready for some guidance from the Doctor. (e.g. "I feel like I have a good understanding of what you're going through. Are you ready for me to consult the Doctor for some guidance, or is there more on your mind?")
    - If you HAVE asked, and their reply indicates "no" or readiness to proceed: Respond EXACTLY with: NO_FOLLOWUP_NEEDED
-   - If you HAVE asked, but they shared new information: Acknowledge the new information naturally in your own words, and then softly check in again to see if they're ready to proceed to the Doctor. DO NOT sound repetitive or robotic. Vary your phrasing (e.g., "Take your time. Should we pause here and see what the Doctor suggests, or do you want to keep talking?").
+   - If you HAVE asked, but they shared new information: Acknowledge the new information naturally in your own words, and then softly check in again to see if they're ready to proceed to the Doctor. DO NOT sound repetitive or robotic. Vary your phrasing to be incredibly gentle (e.g., "I hear you, and it makes complete sense you feel that way. If you feel ready, I can ask the Doctor to share some gentle guidance, or if you prefer, we can just keep talking.").
 
 Never use the word 'symptom'. Keep it conversational.
 Symptoms so far: {symptoms}

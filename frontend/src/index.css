@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Calming Blue Palette */
+  --primary: #4F86F7;          /* Soft royal blue */
+  --primary-hover: #3b73e5;
+  --secondary: #e0eaff;        /* Very light blue */
+  --bg-gradient-start: #f0f4ff;
+  --bg-gradient-end: #ffffff;
+  
+  --surface: #ffffff;
+  --surface-hover: #f8fafc;
+  
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  
+  --border: #e2e8f0;
+  
+  --message-user: var(--primary);
+  --message-user-text: #ffffff;
+  --message-bot: #ffffff;
+  --message-bot-text: var(--text-main);
+  
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Doctor Specific */
+  --doctor-avatar-bg: #10b981;
+  --doctor-bubble-bg: #ecfdf5;
+  --doctor-bubble-border: #a7f3d0;
+  --doctor-bubble-text: #064e3b;
+}
+
+/* Dark Theme overrides */
+body[data-theme='dark'] {
+  --primary: #60a5fa;
+  --primary-hover: #3b82f6;
+  --secondary: #1e293b;
+  --bg-gradient-start: #0f172a;
+  --bg-gradient-end: #020617;
+  
+  --surface: #1e293b;
+  --surface-hover: #334155;
+  
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  
+  --border: #334155;
+  
+  --message-user: var(--primary);
+  --message-user-text: #ffffff;
+  --message-bot: #1e293b;
+  --message-bot-text: var(--text-main);
+
+  --doctor-avatar-bg: #059669;
+  --doctor-bubble-bg: #064e3b;
+  --doctor-bubble-border: #047857;
+  --doctor-bubble-text: #ecfdf5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+  color: var(--text-main);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
