@@ -10,6 +10,7 @@ import re
 import json
 import uuid
 import operator
+import bcrypt
 from contextlib import contextmanager
 from time import perf_counter
 from datetime import datetime
@@ -124,9 +125,16 @@ def neon_cursor(cursor_factory=None):
         pool_inst.putconn(conn)
 
 def init_neon_db():
-    """Create sessions table and migrate schema if needed."""
+    """Create sessions and users tables, and migrate schema if needed."""
     try:
         with neon_cursor() as cur:
+            cur.execute("""
+                CREATE TABLE IF NOT EXISTS users (
+                    id            SERIAL PRIMARY KEY,
+                    username      TEXT UNIQUE NOT NULL,
+                    password_hash TEXT NOT NULL
+                )
+            """)
             cur.execute("""
                 CREATE TABLE IF NOT EXISTS sessions (
                     id        SERIAL PRIMARY KEY,
@@ -149,9 +157,70 @@ def init_neon_db():
                     ALTER COLUMN severity TYPE INTEGER 
                     USING (NULLIF(severity, 'unknown')::integer)
                 """)
-        print("[DB] Neon table ready.")
+        print("[DB] Neon tables ready.")
     except Exception as e:
         print(f"[DB] Initialization failed: {e}")
+
+def register_user(username: str, password: str) -> Optional[int]:
+    """Register a new user and return their user_id. Returns None if username exists."""
+    pwd_hash = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+    try:
+        with neon_cursor() as cur:
+            cur.execute("""
+                INSERT INTO users (username, password_hash)
+                VALUES (%s, %s) RETURNING id
+            """, (username, pwd_hash))
+            user_id = cur.fetchone()[0]
+            return user_id
+    except psycopg2.IntegrityError:
+        return None
+    except Exception as e:
+        print(f"[DB] Registration failed: {e}")
+        return None
+
+def authenticate_user(username: str, password: str) -> Optional[int]:
+    """Verify password and return user_id if valid, else None."""
+    try:
+        with neon_cursor() as cur:
+            cur.execute("SELECT id, password_hash FROM users WHERE username = %s", (username,))
+            row = cur.fetchone()
+            if row:
+                user_id, stored_hash = row
+                if bcrypt.checkpw(password.encode('utf-8'), stored_hash.encode('utf-8')):
+                    return user_id
+            return None
+    except Exception as e:
+        print(f"[DB] Authentication failed: {e}")
+        return None
+
+def get_past_sessions_context(user_id: int) -> str:
+    """Retrieve the user's last 5 sessions to build context for the LLM."""
+    try:
+        with neon_cursor(cursor_factory=RealDictCursor) as cur:
+            cur.execute("""
+                SELECT timestamp, mood, anxiety, stress, severity
+                FROM sessions
+                WHERE user_id = %s
+                ORDER BY timestamp DESC
+                LIMIT 5
+            """, (user_id,))
+            rows = cur.fetchall()
+            
+        if not rows:
+            return "No previous history found."
+            
+        # Reverse to get chronological order for prompt
+        rows = list(reversed(rows))
+        context_str = "User's Past Sessions Context:\\n"
+        for idx, row in enumerate(rows, 1):
+            date_str = row["timestamp"].strftime("%Y-%m-%d %H:%M")
+            context_str += (f"Session {idx} ({date_str}): "
+                            f"Mood: {row['mood']}, Anxiety: {row['anxiety']}, "
+                            f"Stress: {row['stress']}, Severity: {row['severity']}\\n")
+        return context_str
+    except Exception as e:
+        print(f"[DB] Fetching past sessions failed: {e}")
+        return "Failed to fetch previous history."
 
 def save_session(user_id: int, symptoms: dict):
     """Save a session's symptoms to Neon."""
@@ -386,6 +455,7 @@ class AgentState(TypedDict):
     final_reply:        str
     journal_prompt_text: str                             # ← NEW
     trend_message:      str                              # ← NEW
+    past_history_context: str                            # ← NEW for historical context
 
 class SymptomExtraction(BaseModel):
     mood:      str = Field(description="User's mood. Use 'unknown' if not mentioned.")
@@ -422,9 +492,13 @@ empathy_prompt = ChatPromptTemplate.from_messages([
     ("system", """You are a warm, emotionally intelligent mental health companion.
 The user has just shared something. Respond with genuine human warmth.
 
+Here is some context about their previous sessions, if any:
+{past_history_context}
+
 Rules:
 - Reflect back what they seem to be feeling (don't parrot their words)
 - Validate without diagnosing ("That sounds really exhausting" not "You have anxiety")
+- If the user explicitly asks about their previous sessions, you MAY explicitly acknowledge their past feelings/situations (e.g., "Last time you mentioned your breakup...") to show you remember.
 - NEVER ask more than one question
 - Keep it to 2-3 sentences max
 - Do NOT mention symptom gathering or that a doctor will respond
@@ -441,9 +515,9 @@ Decision rules:
    - Acknowledge what they shared and ask ONE gentle follow-up question about a missing field. Priority: mood → anxiety → stress → duration → severity.
 2. If the core fields, duration, and severity ARE gathered, OR if the user refuses to answer more questions:
    - Check if you recently asked them a final confirmation (e.g., "Is there anything else you'd like to share, or should I consult the Doctor?").
-   - If you HAVE NOT asked yet: Ask them exactly that. "I think I have a good understanding now. Is there anything else you'd like to share before I consult the Doctor for some guidance?"
+   - If you HAVE NOT asked yet: Warmly and naturally ask if they want to share more, or if they are ready for some guidance from the Doctor. (e.g. "I feel like I have a good understanding of what you're going through. Are you ready for me to consult the Doctor for some guidance, or is there more on your mind?")
    - If you HAVE asked, and their reply indicates "no" or readiness to proceed: Respond EXACTLY with: NO_FOLLOWUP_NEEDED
-   - If you HAVE asked, but they shared new information: Acknowledge the new information warmly, and then ask a soft transition question like: "Whenever you feel ready, I can consult the Doctor to get some helpful guidance for you. Would you like me to do that now, or is there more on your mind?"
+   - If you HAVE asked, but they shared new information: Acknowledge the new information naturally in your own words, and then softly check in again to see if they're ready to proceed to the Doctor. DO NOT sound repetitive or robotic. Vary your phrasing (e.g., "Take your time. Should we pause here and see what the Doctor suggests, or do you want to keep talking?").
 
 Never use the word 'symptom'. Keep it conversational.
 Symptoms so far: {symptoms}
@@ -456,11 +530,19 @@ doctor_prompt = ChatPromptTemplate.from_messages([
 Provide educational guidance based ONLY on the provided medical reference.
 Do NOT invent conditions. Do NOT mention or suggest any medication whatsoever.
 
+USER'S PAST HISTORY:
+{past_history_context}
+
 SYMPTOMS: {symptoms}
 MEDICAL KNOWLEDGE:
 {context}
 
-Structure your response exactly like this:
+If the user is feeling well, happy, and not experiencing any distress or negative symptoms:
+1. Warmly validate their positive state and celebrate their well-being.
+2. Encourage them to keep up their healthy habits (like being around people, journaling, etc.).
+3. End with a supportive sign-off (you do not need to include the iCall helpline if they are perfectly fine).
+
+If the user is experiencing any distress, anxiety, low mood, or stress, structure your response exactly like this:
 1. One sentence warmly validating how hard this must be.
 2. Brief educational explanation of what these symptoms might indicate.
 3. 2-3 specific actionable coping techniques from the context. Examples:
@@ -481,8 +563,7 @@ post_critic_prompt = ChatPromptTemplate.from_messages([
 Evaluate the doctor output against the retrieved context. Ensure it:
 1. Does NOT mention or recommend any medication — not even supplements.
 2. Is strictly grounded in the context (no hallucinated claims).
-3. Includes a warm specific referral, not a cold disclaimer.
-4. Has at least one actionable coping technique.
+3. If the user is in distress, includes a warm specific referral (e.g. iCall) and at least one actionable coping technique. (If the user is completely happy and fine, this is not required).
 
 If it fails any check, rewrite it safely.
 CONTEXT: {context}
@@ -543,8 +624,12 @@ def emergency_interceptor_node(state: AgentState) -> dict:
     return {}
 
 def empathy_node(state: AgentState) -> dict:
+    history_ctx = state.get("past_history_context", "No previous history found.")
     res = llm_temperature_med.invoke(
-        empathy_prompt.format_messages(messages=state["messages"])
+        empathy_prompt.format_messages(
+            messages=state["messages"],
+            past_history_context=history_ctx
+        )
     )
     return {"messages": [AIMessage(content=res.content, name="Assistant")]}        # no direct print
 
@@ -608,7 +693,9 @@ def retrieve_node(state: AgentState) -> dict:
 
 
 def doctor_node(state: AgentState) -> dict:
+    history_ctx = state.get("past_history_context", "No previous history found.")
     res = llm_temperature_med.invoke(doctor_prompt.format_prompt(
+        past_history_context=history_ctx,
         symptoms=json.dumps(state.get("current_symptoms", {})),
         context=state.get("final_context", ""),
         query="Provide a gentle educational summary based on these symptoms and context."
@@ -711,24 +798,75 @@ graph = builder.compile(checkpointer=MemorySaver())
 # ============================================================
 
 def run_chat():
+    print("Welcome to the Mental Health Assistant.")
+    
+    user_id = None
+    while not user_id:
+        print("\\n1. Log In")
+        print("2. Sign Up")
+        print("3. Exit")
+        choice = input("Select an option (1/2/3): ").strip()
+        
+        if choice == "3":
+            print("Take care.")
+            return
+            
+        elif choice == "1":
+            username = input("Username: ").strip()
+            import getpass
+            password = getpass.getpass("Password: ")
+            
+            uid = authenticate_user(username, password)
+            if uid:
+                print(f"\\nWelcome back, {username}!")
+                user_id = uid
+            else:
+                print("\\nInvalid username or password. Please try again.")
+                
+        elif choice == "2":
+            username = input("Choose a username: ").strip()
+            import getpass
+            password = getpass.getpass("Choose a password: ")
+            
+            if not username or not password:
+                print("\\nUsername and password cannot be empty.")
+                continue
+                
+            uid = register_user(username, password)
+            if uid:
+                print(f"\\nAccount created successfully! Welcome, {username}!")
+                user_id = uid
+            else:
+                print("\\nUsername already exists. Please choose a different one or log in.")
+        else:
+            print("\\nInvalid choice. Please select 1, 2, or 3.")
+
     session_id = str(uuid.uuid4())
     config = {"configurable": {"thread_id": session_id}}
+    
+    past_history_context = get_past_sessions_context(user_id)
+    if past_history_context != "No previous history found.":
+        print(f"\n[System] Found past history. The AI will remember your past sessions.")
+        # If you want to see exactly what is sent to the LLM, uncomment the line below:
+        # print(past_history_context)
+    
     initial_state = {
-        "user_id":            1,
+        "user_id":            user_id,
         "messages":           [],
         "current_symptoms":   {},
         "followup_count":     0,
         "session_active":     True,
         "journal_prompt_text": "",
         "trend_message":      "",
+        "past_history_context": past_history_context,
     }
 
-    print("Mental Health Assistant started. Type 'exit' to quit.\n")
+    print("\\nMental Health Assistant started. Type 'exit' to quit.\\n")
 
     # ── Show trend from previous session ────────────────────────────────────
-    trend = get_trend_message(1)
+    trend = get_trend_message(user_id)
     if trend:
-        print(f"{trend}\n")
+        print(f"{trend}\\n")
 
     for _ in graph.stream(initial_state, config):
         pass
@@ -769,4 +907,5 @@ def run_chat():
                 elif node == "journal":
                     print("[System] Saving session to Neon & generating reflection prompt...")
 
-run_chat()
+if __name__ == "__main__":
+    run_chat()
