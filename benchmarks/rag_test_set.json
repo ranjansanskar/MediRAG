@@ -1,0 +1,152 @@
+[
+    {
+        "id": "994a2783-c6ef-497b-9a2d-d92e17255c0d",
+        "query": "I'm feeling really lonely and could use some advice on finding social support or activities to help me feel better. What should I do?",
+        "expected_text": "source of social support and good company for social activities \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nWe hope that you have found this \ninformation package to be of benefit to \nyou and that you will maintain all the \ngains you have made.  If you have \nquestions about medication or \npsychotherapy for depression, do go and \nsee your doctor or an appropriate \nmental health practitioner.  For now, it\u2019s \ngoodbye from us at CCI. Take care!"
+    },
+    {
+        "id": "54a2d0e8-9e87-4b52-a1c1-fe591cc50665",
+        "query": "I've been feeling really low lately, but sometimes I also have these moments where I feel overly energetic and talkative. Could this be related to my depression, or is it something else?",
+        "expected_text": "DEP 1\n24\nDEPRESSION  Assessment\n IS THERE A HISTORY OF MANIA?\nHave several of the following symptoms occurred simultaneously, lasting for at least 1 week, and severely \nenough to interfere signi\ufb01cantly with work and social activities or requiring hospitalization or con\ufb01nement?\n\u2013 Elevation of mood and/or irritability\n\u2013 Decreased need for sleep\n\u2013  Increased activity, feeling of increased energy, increased  \ntalkativeness or rapid speech\n\u2013  Impulsive or reckless behaviours such as excessive spending, making \nimportant decisions without planning and sexual indiscretion\n\u2013  Loss of normal social inhibitions resulting in inappropriate \nbehaviours \n\u2013 Being easily distracted\n\u2013 Unrealistically in\ufb02ated self-esteem\nHAS THERE BEEN A MAJOR LOSS (E.G. BEREAVEMENT)  \nWITHIN THE LAST 6 MONTHS?"
+    },
+    {
+        "id": "043eca94-75cb-4096-82b1-5f0e3881b68a",
+        "query": "I'm feeling really overwhelmed and unsure about my treatment options for depression, especially since I'm pregnant. What should I consider when deciding between medication and therapy?",
+        "expected_text": "as a first-line treatment (see Recommendation 7). In patients with a \nhistory of MDD prior to pregnancy who responded to antidepressant \nmedications, and are currently stable on pharmacotherapy, weigh \nrisk/benefit balance to both mother and fetus in treatment decisions.\nStrong for\nNot \nreviewed, \nAmended\n24.\nFor older adults (\u226565 years) with mild to moderate MDD, we suggest \noffering a first-line psychotherapy (see Recommendation 7). Patient \npreference and the additional safety risks of pharmacotherapy should \nbe considered when making this decision.\nWeak for\nNot \nreviewed, \nAmended\n25.\nFor patients with mild to moderate MDD and significant relationship \ndistress, we suggest offering couples-focused therapy.\nWeak for\nNot \nreviewed, \nAmended\n26."
+    },
+    {
+        "id": "9efedb42-cdcc-4f72-a820-2803212de9bf",
+        "query": "I keep overthinking every little thing my partner does, and I can't shake the feeling that I'm not good enough for them. How can I figure out if my thoughts are just my anxiety talking?",
+        "expected_text": "Centre for \n  \n \nC\nlinical \nI\nnterventions \nPage 4 \nModule 4: The ABC Analysis \n\u2022Psychotherapy\u2022Research\u2022Training \nthe \nBack from \nOn the next page is a Thought Diary for you to start doing an ABC analysis and recording your unhelpful \nthoughts.  Here\u2019s an example of an ABC analysis recorded on a Thought Diary: \n \n \n \n \n \n \nThought Diary (example) \nA \nActivating Event  \n \nThis may include an actual event or \nsituation, a thought, mental picture or \nphysical trigger. \nWhen my partner came home \nthis evening, she said \u2018hi\u2019 but \ndidn\u2019t give me a kiss like she \nusually does. \nB \nBeliefs  \n1. List all self-statements that link A to C.  Ask \nyourself: \u201cWhat was I thinking?\u201c \u201cWhat was I \nsaying to myself?\u201c  \u201cWhat was going through my \nhead at the time?\u201c"
+    },
+    {
+        "id": "8b62d01f-ae98-4baa-94a2-33cc78bfe9f9",
+        "query": "I'm feeling really overwhelmed in social situations, especially when there's a lot of noise. How can I communicate better with my therapist or support person when I'm struggling?",
+        "expected_text": "Working With Survivors with Disabilities\nWhen needed, try to provide assistance in an area with little noise or other \nstimulation.\nAddress the person directly, rather than the caretaker, unless direct communication \nis difficult.\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7"
+    },
+    {
+        "id": "f28d4ea0-3228-4d4b-99bf-1784c49e8e2d",
+        "query": "I'm feeling really overwhelmed and don't know where to start when it comes to getting help. Can you tell me about Psychological First Aid and how it can support me right now?",
+        "expected_text": "Psychological First Aid\nField Operations Guide\n2nd Edition\nLIST OF APPENDICES:\nAppendix A: Overview of Psychological First Aid\nAppendix B: Service Delivery Sites and Settings\nAppendix C: Psychological First Aid Provider Care\nAppendix D: Psychological First Aid Worksheets\nAppendix E: Handouts for Survivors\nAppendix F: Handouts to Distribute and Copy"
+    },
+    {
+        "id": "dae4ffd1-3af2-4573-bebc-9e8495ac626c",
+        "query": "I'm feeling really overwhelmed and unsure about how to take care of myself right now. Can you help me figure out what I need to do for my daily activities and medication?",
+        "expected_text": "Safety and Comfort\nNational Child Traumatic Stress Network   National Center for PTSD \n28\nEnsure Immediate Physical Safety - continued \nAsk whether the survivor needs help with health-related issues or daily activities (for \nexample, assistance with dressing, use of bathroom, daily grooming, and meals). \nInquire about current need for medication. Ask if he/she has a list of current medications or \nwhere this information can be obtained, and make sure he/she has a readable copy of this \ninformation to keep during the post-disaster period.\nConsider keeping a list of survivors with special needs so that they can be checked on more \nfrequently.\nContact relatives, if they are available, to further ensure safety, nutrition, medication, and"
+    },
+    {
+        "id": "a8bf2ae5-eba8-4050-ab93-d777f4d6e068",
+        "query": "I've been feeling really overwhelmed and I'm worried about my mental health. Can you tell me how common these feelings are, especially among veterans?",
+        "expected_text": "prevalence estimates for lifetime suicide ideation are 12.7% among men and 20.7% among women. \nLifetime suicide attempts are 2.5% among men and 12.7% among women.(9)\nIn the fiscal year 2020, among Veterans served by the VHA and based on electronic medical record data, \nthe prevalence of MDD was 16.8% (just over 987,000 Veterans), with a total of 19.4% (just over \n1,141,300 Veterans) having documentation of any depression diagnosis.(10) Age and sex-adjusted \nsuicide rates in Veterans was 52% greater in Veterans than in U.S. civilian population.(11)"
+    },
+    {
+        "id": "beac0901-0932-41a5-a47a-a8faca556f15",
+        "query": "I'm feeling really stuck and unmotivated lately. How can I start exercising and make it a regular part of my life?",
+        "expected_text": "the one that gets you moving \u2013 so think about what will \nwork for you. \nOkay, so how can I get started? \nBy making the decision to exercise more, you\u2019ve already \ntaken the biggest step towards your health and well-\nbeing. Decide what activity interests you most, then take \nthe steps required to get started. Call your friend or the \nsports club to make the arrangements. Put on your \nrunners. Walk out the door. And get moving! Action \noften needs to come before motivation \u2013 once you start \nmoving it will be easier to continue. Ultimately, the most \npowerful motivation will need to come from within \u2013 \nconsider why you have decided to make this change in \nyour life, and what you stand to gain. Keep the image of \nyour new future in mind as you take steps towards \nbetter health and well-being."
+    },
+    {
+        "id": "0dcbb569-bf97-4a31-873e-7296185082e5",
+        "query": "I'm feeling really overwhelmed by my depression and I'm not sure what treatment options are available. Can you help me understand the best ways to manage it?",
+        "expected_text": "66. \nvan Straten A, Hill J, Richards DA, Cuijpers P. Stepped care treatment delivery for depression: a systematic \nreview and meta-analysis. Psychol Med. 2014:1-16. Epub 2014/07/30. doi: 10.1017/s0033291714000701. \nPubMed PMID: 25065653.\n67. \nCape J, Whittington C, Bower P. What is the role of consultation-liaison psychiatry in the management of \ndepression in primary care? A systematic review and meta-analysis. General hospital psychiatry. \n2010;32(3):246-54. Epub 2010/05/01. doi: 10.1016/j.genhosppsych.2010.02.003. PubMed PMID: 20430227.\n68. \nMorriss R, Garland A, Nixon N, Guo B, James M, Kaylor-Hughes C, et al. Efficacy and cost-effectiveness of a \nspecialist depression service versus usual specialist mental health care to manage persistent depression: a"
+    },
+    {
+        "id": "4217876e-5fe2-4437-9bf5-5fa0f444d3fe",
+        "query": "I'm really struggling with my sleep lately and I've heard about something called sleep hygiene. Can you tell me what it is and how it might help me?",
+        "expected_text": "This document is for information purposes only. Please refer to the full disclaimer and copyright statement available at  \nhttp://www.cci.health.wa.gov.au regarding the information from this website before making use of such information.  \nSee website www.cci.health.wa.gov.au for more handouts and resources. \n \nWhat is Sleep Hygiene? \n \n\u2018Sleep hygiene\u2019 is the term used to describe good sleep habits. \nConsiderable research has gone into developing a set of \nguidelines and tips which are designed to enhance good \nsleeping, and there is much evidence to suggest that these \nstrategies can provide long-term solutions to sleep difficulties.  \n \nThere are many medications which are used to treat insomnia, \nbut these tend to be only effective in the short-term. Ongoing"
+    },
+    {
+        "id": "df407a4c-7d83-41a0-bae3-76a4215c82e7",
+        "query": "I've been feeling really overwhelmed and unsure about the credibility of the mental health resources I'm using. How can I be sure that the guidelines and recommendations are trustworthy and free from conflicts of interest?",
+        "expected_text": "based identification via standard electronic means (e.g., Centers for Medicare & Medicaid Services Open \nPayments and/or ProPublica).\nNo COIs were identified among the CPG Work Group or the guideline development team. If an instance \nof potential or actual COI had been reported, it would have been referred to the VA and DoD program \noffices and reviewed with the CPG Work Group Champions. The VA and DoD program offices and the \nCPG Work Group Champions would have determined whether, and if so, what, further action was \nappropriate (e.g., excusing Work Group members from selected relevant deliberations or removal from \nthe Work Group). Disclosure forms are on file with the VA Office of Quality and Patient Safety and are \navailable upon request.\nD. \nPatient Perspective"
+    },
+    {
+        "id": "72cb0412-4ab2-4137-9819-9794d78dfa6c",
+        "query": "I've tried multiple medications and therapies for my depression, but nothing seems to work. I've heard about VNS as a treatment option\u2014can you tell me more about it?",
+        "expected_text": "treatment of MDD. The FDA defines TRD and indicates the use of VNS in \u201cpatients who have been \ntreated with, but failed to respond to, at least four adequate medication regimens and/or ECT \nprescribed by their physician.\u201d(203) The FDA initially approved VNS for the treatment of refractory \nepilepsy. In patients with refractory epilepsy who received VNS, it was noted that their mood improved, \nthus leading to consideration of VNS for depression.(204)\nA double-blind RCT of 235 outpatients found no difference between VNS and a sham placebo.(205) \nOther evidence stems from primarily non-blinded follow-up studies, comparing intervention group"
+    },
+    {
+        "id": "96382201-895e-4497-8234-0ae9fab0f18d",
+        "query": "I'm feeling really overwhelmed with my mental health decisions and I want to make sure I'm choosing the right treatment. How can I know if the recommendations I'm getting are reliable and based on solid evidence?",
+        "expected_text": "recommendations must be evidence-based and cannot be made based on expert opinion alone. The \nGRADE approach uses the following four domains to inform the strength of each recommendation (see \nDetermining Recommendation Strength and Direction):(14)\n\u00b7\nConfidence in the quality of the evidence \n\u00b7\nBalance of desirable and undesirable outcomes \n\u00b7\nPatient values and preferences\n\u00b7\nOther considerations, as appropriate, e.g.:\n\u00a8\nResource use\n\u00a8\nEquity\n\u00a8\nAcceptability\n\u00a8\nFeasibility\n\u00a8\nSubgroup considerations\nUsing these four domains, the Work Group determined the relative strength of each recommendation \n(Strong or Weak). The strength of a recommendation is defined as the extent to which one can be"
+    },
+    {
+        "id": "242c957a-43a5-43c5-88c7-315a60eeee48",
+        "query": "I'm feeling really overwhelmed and unsure about the treatment options for my depression. Can you help me understand what kind of research or evidence supports different therapies?",
+        "expected_text": "VA/DoD Clinical Practice Guideline for the Management of Major Depressive Disorder\nFebruary 2022 \nPage 79 of 159\na. General Criteria for Inclusion in Systematic Evidence Review\n\u00b7\nSystematic reviews or clinical studies published on or after May 1, 2015, to January 31, 2021. If \nmultiple systematic reviews addressed a KQ, we selected the most recent and/or \ncomprehensive review. Systematic reviews serve as the first line of evidence for all KQs. In the \nabsence of an SR for an intervention, RCTs were considered for inclusion.\n\u00b7\nStudies must be published in English.\n\u00b7\nPublication must be a full clinical study or SR; abstracts alone were not included. Similarly, \nletters, editorials, and other publications that are not full-length clinical studies were not \naccepted as evidence. \n\u00b7"
+    },
+    {
+        "id": "0d5ac088-5d8d-46bc-b1d5-0631e6764b6a",
+        "query": "I keep avoiding social situations because I'm scared of embarrassing myself. Can you explain what safety behaviours are and why I might be doing this?",
+        "expected_text": "What are safety behaviours? \nSafety behaviours are used in an attempt to prevent \nfears from coming true and to feel more comfortable in \nsituations we are anxious about.  \nIf we believe that a situation will not go well, we are \nlikely to feel anxious and to have an urge to avoid the \nsituation.  If we can\u2019t avoid the situation all \ntogether, we might use subtle forms of \navoidance or precautions  to try to \nprevent our fears from coming true.  We \ncall these safety behaviours.  \nSafety behaviours may be very different for different \npeople. It is not what you do, but why you are doing it \nthat determines whether something is considered a \nsafety behaviour.  Here are some examples... \nSome of these are behaviours people might engage in \nwithout anxiety. For example, someone"
+    },
+    {
+        "id": "5fdc8078-ae5a-42b6-b16f-c4d6d29033c9",
+        "query": "I'm feeling really down and overwhelmed lately. Can you suggest some activities that might help lift my mood or distract me?",
+        "expected_text": "101. Buying clothes \n102. Going to the botanic gardens \n103. Going to a scenic spot and enjoying the view \n104. Going to the speedway \n105. Snuggling up with a soft blanket \n106. Listening to an audiobook \n107. Going to see live stand-up comedy \n108. Writing down a list of things I am grateful for \n109. Maintaining an aquarium \n110. Playing Frisbee \n111. Teaching a special skill to someone else (e.g. \nknitting, woodworking, painting, language) \n112. Playing chess (with a friend or at a local club) \n113. Going to a games arcade \n114. Jumping on a trampoline \n115. Sending a text message to a friend \n116. Going fishing \n117. Doodling \n118. Putting a vase of fresh flowers in my house \n119. Participating in a protest I support \n120. Going to a movie"
+    },
+    {
+        "id": "2c5b4c4f-0e2f-4963-9655-86aacffa842a",
+        "query": "I'm feeling really overwhelmed and I'm not sure if it's just stress or something more serious. How can I figure out what's going on with my mental health?",
+        "expected_text": "ESSENTIAL CARE AND PRACTICE\n \n Physical Examination\n \n   Conduct a targeted physical examination guided by the information \nfound during the MNS assessment. \n \nMental Status Examination (MSE)*\n \n    Ask about and observe the person\u2019s Appearance and Behaviour,  \nMood and Affect, Content of Thought, any Perceptual disturbances and \nCognition. See symptom based Master Chart (MC) for details. \n \nDifferential Diagnosis \n \n    Consider the differential diagnosis and rule out conditions that have  \nsimilar presenting symptoms.  \n \nBasic Laboratory Tests\n \n   Request laboratory tests when indicated and possible, especially  \nto rule out physical causes.\n \nIdentify the MNS Condition \n \n   Identify the MNS condition using the appropriate module(s)."
+    },
+    {
+        "id": "260dfdb6-d934-454d-a62e-66ce05a2f82a",
+        "query": "I'm feeling really overwhelmed and unsure about how to start addressing my depression. Can you help me understand what the first steps are in managing major depressive disorder?",
+        "expected_text": "VA/DoD Clinical Practice Guideline for the Management of Major Depressive Disorder\nFebruary 2022 \nPage 18 of 159\nA. \nModule A: Initial Assessment and Treatment \nAbbreviations: MBC: measurement-based care; MDD: major depressive disorder; SDM: shared decision making"
+    },
+    {
+        "id": "315d1622-8a5f-4330-b8a6-3f26614af990",
+        "query": "I'm feeling really overwhelmed and my current medication doesn't seem to be helping. Are there any effective options for treating major depression if the first treatment isn't working?",
+        "expected_text": "VA/DoD Clinical Practice Guideline for the Management of Major Depressive Disorder\nFebruary 2022 \nPage 78 of 159\nviii. 9 citations excluded at this level had unclear or inadequate follow-up \nix. 14 citations excluded at this level were excluded for another reason \n(e.g., abstract, published outside date range, or data wholly covered in a \nprevious review)\nb. Down to Box 9\n5. Box 9: 66 included studies\nTable A-2. Evidence Base for KQs\nKQ \nNumber\nKQ\nNumber and \nStudy Type\n1\nFor adults with MDD, what is the efficacy and safety of pharmacotherapies for \ntreating depression symptoms, including newer FDA-approved pharmacotherapies?\n5 SRs*, 1 RCT\n2\nFor adults with MDD who demonstrate no or partial benefit from initial \npharmaceutical treatment, what is the efficacy of adding or changing"
+    },
+    {
+        "id": "291e0822-9e62-4492-9efe-e3d8662c0bed",
+        "query": "I've been feeling really anxious and confused lately, and I heard that some medications can cause serious side effects. Can you tell me more about serotonin syndrome and what symptoms I should watch out for?",
+        "expected_text": "164\nGLOSSARY\nTERM\nDEFINITION\nTERM\nDEFINITION\nSerotonin syndrome\nCharacterised by an excess of serotonin in the central nervous \nsystem, associated with the use of various agents, including selective \nserotonin reuptake inhibitors (SSRIs). Serotonin syndrome may result \nin muscle rigidity, myoclonus, agitation, confusion, hyperthermia,  \nhyperre\ufb02exia as well as dysautonomic symptoms, with a risk of  \nshock with low peripheral vascular resistance, seizures, coma, \nrhabdomyolysis and/or disseminated intravascular coagulation (DIC).\nSlurred speech\nSpeech with indistinctive pronunciation.\nSocial network\nA construct of analytical sociology referring to the characteristics of \nthe social linkages among people as a means of understanding their"
+    },
+    {
+        "id": "a20e2702-27d7-4a12-834c-e1ccf9ced017",
+        "query": "I'm feeling really overwhelmed and unsure about my medications and how they might be affecting my mental health. What should I do to make sure I'm managing them properly?",
+        "expected_text": "Stabilization\nPsychological First Aid - Field Operations Guide\n53\nGather information that will be helpful when referring to a physician, including:\nList of current medications \nCurrent medications that require ongoing monitoring by a physician\nAccess to currently prescribed medications, doctors, and dispensing pharmacy\nThe survivor\u2019s compliance with medication\nSubstance abuse/recovery issues\nOngoing medical and mental health conditions\nYou may obtain more information about current medications from family and friends if \nthe survivor is too distressed or confused to give an accurate report.\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7"
+    },
+    {
+        "id": "021ac1d0-e0cf-4a3f-9d43-e6c9b8b478c1",
+        "query": "I'm feeling really overwhelmed after a recent disaster and I'm not sure how to cope. Is there a way to get immediate support that can help me right now?",
+        "expected_text": "Introduction and Overview\nNational Child Traumatic Stress Network   National Center for PTSD \n6\nWhen Should Psychological First Aid Be Used?\nPsychological First Aid is a supportive intervention for use in the immediate aftermath of \ndisasters and terrorism.\nWhere Should Psychological First Aid Be Used?\nPsychological First Aid is designed for delivery in diverse settings. Mental health and \nother disaster response workers may be called upon to provide Psychological First \nAid in general population shelters, special needs shelters, field hospitals and medical \ntriage areas, acute care facilities (for example, Emergency Departments), staging areas \nor respite centers for first responders or other relief workers, emergency operations"
+    },
+    {
+        "id": "c89f6f2b-01c1-4af7-b6ba-a4e265a85608",
+        "query": "I just finished a mental health program, but I'm worried about how to keep the progress I've made. What should I do to maintain my gains and stay well?",
+        "expected_text": "the \nBack from \nCentre for \n  \n \nC\nlinical \nI\nnterventions \nPage 2 \nModule 9 \n\u2022Psychotherapy\u2022Research\u2022Training \n \nMaintaining Your Gains and \nStaying Well \n \nCongratulations on making it to the end of this information package!  We\u2019re glad you stayed on \nwith us.  If you haven\u2019t read all the modules, it might be good to go back to the ones you missed.  \nHowever, the most important thing for you now is to keep practising some of the strategies you \nmight have learned through reading the modules in this info-pack. This means continuing to apply \nall of the useful skills and insights about yourself you might have gained.  If you continue practising \nthe concepts and skills you have learned, they will become like habits that have been integrated \ninto your lifestyle."
+    },
+    {
+        "id": "de3199c0-2191-43af-9ab8-d5270005657e",
+        "query": "I'm feeling really overwhelmed right now and I'm worried about my past struggles with alcohol. What should I do if I feel the urge to drink again?",
+        "expected_text": "your family and others for support.\n\uf0a7\nIf you believe you have a problem with \nsubstance abuse, talk to your doctor or \ncounselor about it.\n\uf0a7\nIf you feel like using larger amounts of either \nprescribed or over-the-counter medications, \nconsult a healthcare professional.\n\uf0a7\nIf you have had an alcohol, medication, or drug problem in the past\nFor people who have successfully stopped drinking or using drugs, experiencing a disaster can \nsometimes result in strong urges to drink or use again.  Sometimes it can lead them to strengthen \ntheir commitment to recovery.  Whatever your experience, it is important to consciously choose to \nstay in recovery.  \nIncrease your attendance at substance abuse \nsupport groups.\n\uf0a7\nTalk with family and friends about supporting"
+    },
+    {
+        "id": "425c2d30-7dfa-4782-9832-87573498f01d",
+        "query": "I keep having these really negative thoughts that I can't shake off, and I'm not sure if they're based on reality. How can I figure out if I'm just overreacting or if there's something I need to address?",
+        "expected_text": "going through my head at the time?\u201d\n2.\nMark the most distressing (hot) thought with an asterisk (*).\n3.\nRate how much you believe this thought from 0 to 100.\nUnhelpful Thinking Styles \nDo you recognise any unhelpful thinking styles you might have \nbeen using?  \n(Mental filter, jumping to conclusions, personalisation, \ncatastrophising, black & white thinking, shoulding & musting, \novergeneralisation, labelling, emotional reasoning, \ndisqualifying/ignoring positives)"
+    },
+    {
+        "id": "940b3b37-2e1a-466b-b915-c14e4d4b57db",
+        "query": "I've been on antidepressants for a while, but I still feel like I'm struggling with my depression. Would combining therapy with my medication help me feel better?",
+        "expected_text": "\u00b7\nRecurrent (with two or more episodes)\n(Weak for | Not reviewed, Amended)\nDiscussion\nAn SR by Li et al. (2018), which included six RCTs evaluating the addition of a CBT intervention (e.g., CBT \nfor depression or mindfulness-based cognitive therapy) to pharmacotherapy for patients with residual \nsymptoms of depression after one or more adequate trials of antidepressant medication, suggests \ncombining CBT and pharmacotherapy is more efficacious than pharmacotherapy alone in improving \nsymptoms of depression in these patients.(117) Superior outcomes for the combination conditions were"
+    },
+    {
+        "id": "cfcc4215-fa2e-484f-a08f-52c82ae15276",
+        "query": "I've been feeling really overwhelmed since the disaster, and I can't stop thinking about the things I've lost, especially my child's favorite toy. It's been over two weeks, and I don't know how to help my child cope with this sadness. What should I do?",
+        "expected_text": "honestly. When strong reactions last longer than two weeks, seek help \nfrom a professional.\n\uf0a7\n\uf0a7\n\uf0a7\n\uf0a7\n. . misses things you \nhave lost because of \nthe disaster.\nWhen a disaster brings so much loss to a family and \ncommunity, it is easy to lose sight of how much the loss \nof a toy or other important item (blanket) can mean to a \nchild. \nGrieving for a toy is also your child\u2019s way of grieving for \nall you had before the disaster.\n\uf0a7\n\uf0a7\nAllow your child to express feelings of sadness. It is sad that your \nchild lost her toy or blanket. \nIf possible, try to find something that would replace the toy or blanket \nthat would be acceptable and satisfying to your child.  \nDistract your child with other activities.\n\uf0a7\n\uf0a7\n\uf0a7"
+    },
+    {
+        "id": "74d17ad0-7872-49f8-bb3a-aeeb85d55145",
+        "query": "I'm really worried about my kids after the recent disaster. How can I help them understand what happened and reassure them that they're safe?",
+        "expected_text": "Parent Tips for Helping School-Age Children after Disasters\nPsychological First Aid - Field Operations Guide\nReactions\nResponses \nExamples of things to do and say\nConfusion about what happened\nGive clear explanations of what happened \nwhenever your child asks. Avoid details that would \nscare your child. Correct any misinformation that \nyour child has about whether there is a present \ndanger. \nRemind children that there are people working to \nkeep families safe and that your family can get \nmore help if needed. \nLet your children know what they can expect to \nhappen next.\n\uf0a7\n\uf0a7\n\uf0a7\n\u201cI know other kids said that more tornadoes are \ncoming, but we are now in a safe place.\u201d \nContinue to answer questions your children have \n(without getting irritable) and to reassure them the \nfamily is safe."
+    },
+    {
+        "id": "ea2ad312-71b5-4d3c-a627-a29cf2b821a4",
+        "query": "I'm feeling overwhelmed and unsure about the resources available for mental health support. Is there a guide or tool that can help me understand how to get the care I need?",
+        "expected_text": "published in 2015. We are now pleased to present mhGAP-IG Version 2.0 which not only \nre\ufb02ects these updates but also extensive feedback from the \ufb01eld to enhance the guide  \nin its clarity and usability. \nIt is our hope that this guide will continue to be a key technical tool to deliver  \ncare for people with MNS disorders around the world and lead us closer to achieving \nthe goal of Universal Health Coverage.\nShekhar Saxena\nDirector, Department of Mental Health and Substance Abuse\nWorld Health Organization\nmhGAP-IG 2.0  Preface\niii"
+    }
+]
