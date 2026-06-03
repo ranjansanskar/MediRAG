@@ -45,37 +45,65 @@ def evaluate_relevancy(query, answer):
     except ValueError:
         return 0.5
 
+import time
+
 def run_evaluation():
     print("Entering run_evaluation()", flush=True)
     test_file = os.path.join(os.path.dirname(__file__), "rag_test_set.json")
     with open(test_file, 'r') as f:
         test_set = json.load(f)
         
-    test_set = test_set[:1]
+    test_set = test_set[:20]
     
     print(f"Evaluating {len(test_set)} queries...", flush=True)
     
-    for i, test_case in enumerate(test_set):
-        q = test_case['query']
-        print(f"  Retrieving docs for: {q[:20]}...", flush=True)
-        docs = retrieve_hybrid(q)
-        context_texts = [d.page_content for d in docs]
-        context_str = "\n\n".join(context_texts)
+    total_faithfulness = 0.0
+    total_relevancy = 0.0
+    
+    with open(os.path.join(os.path.dirname(__file__), "evaluation_results.txt"), "w") as out:
+        out.write("RAG Pipeline LLM-as-a-judge Evaluation\\n")
+        out.write("="*40 + "\\n\\n")
         
-        print("  Invoking doctor_prompt...", flush=True)
-        chain = doctor_prompt | llm_temperature_low
-        res = chain.invoke({
-            "query": q,
-            "context": context_str,
-            "symptoms": "unknown",
-            "past_history_context": "None"
-        })
-        answer = res.content
-        print("  Doctor prompt done.", flush=True)
+        for i, test_case in enumerate(test_set):
+            q = test_case['query']
+            print(f"\\n[{i+1}/20] Query: {q[:40]}...", flush=True)
+            
+            # 1. Retrieve & Generate
+            docs = retrieve_hybrid(q)
+            context_texts = [d.page_content for d in docs]
+            context_str = "\\n\\n".join(context_texts)
+            
+            chain = doctor_prompt | llm_temperature_low
+            res = chain.invoke({
+                "query": q,
+                "context": context_str,
+                "symptoms": "unknown",
+                "past_history_context": "None"
+            })
+            answer = res.content
+            
+            # 2. Evaluate
+            f_score = evaluate_faithfulness(context_str, answer)
+            r_score = evaluate_relevancy(q, answer)
+            
+            total_faithfulness += f_score
+            total_relevancy += r_score
+            
+            log_str = f"Q{i+1}: F={f_score:.2f}, R={r_score:.2f} | {q}\\n"
+            print("  -> " + log_str.strip(), flush=True)
+            out.write(log_str)
+            out.flush()
+            
+            if i < len(test_set) - 1:
+                print("  Waiting 15 seconds to respect OpenRouter rate limits...", flush=True)
+                time.sleep(15)
+
+        avg_f = total_faithfulness / len(test_set)
+        avg_r = total_relevancy / len(test_set)
         
-        f_score = evaluate_faithfulness(context_str, answer)
-        r_score = evaluate_relevancy(q, answer)
-        print(f"  Results: F={f_score}, R={r_score}", flush=True)
+        summary = f"\\nFinal Average:\\nFaithfulness: {avg_f:.2f}\\nAnswer Relevancy: {avg_r:.2f}\\n"
+        print(summary, flush=True)
+        out.write(summary)
 
 if __name__ == "__main__":
     run_evaluation()
