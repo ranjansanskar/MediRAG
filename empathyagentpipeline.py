@@ -34,7 +34,7 @@ from psycopg2 import pool
 
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from pypdf import PdfReader
+from langchain_community.document_loaders import PyMuPDFLoader
 from langchain_core.documents import Document
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
@@ -291,14 +291,9 @@ all_docs = []
 for file in os.listdir(mentaldocs_path):
     if file.endswith(".pdf"):
         path = os.path.join(mentaldocs_path, file)
-        reader = PdfReader(path)
-        for i, page in enumerate(reader.pages):
-            text = page.extract_text() or ""
-            if text.strip():
-                all_docs.append(Document(
-                    page_content=text,
-                    metadata={"source": file, "page": i}
-                ))
+        loader = PyMuPDFLoader(path)
+        docs = loader.load()
+        all_docs.extend(docs)
 
 splitter = RecursiveCharacterTextSplitter(
     chunk_size=800, 
@@ -546,11 +541,10 @@ If the user is feeling well, happy, and not experiencing any distress or negativ
 If the user is experiencing any distress, anxiety, low mood, or stress, structure your response exactly like this:
 1. One sentence warmly validating how hard this must be.
 2. Brief educational explanation of what these symptoms might indicate.
-3. 2-3 specific actionable coping techniques from the context. Examples:
-   - Anxiety → box breathing, 5-4-3-2-1 grounding
-   - Low mood → behavioral activation, sunlight exposure
-   - Sleep issues → sleep hygiene tips, body scan meditation
-   - Stress → journaling, progressive muscle relaxation
+3. Suggest 2-3 specific, actionable coping techniques extracted **DIRECTLY from the MEDICAL KNOWLEDGE context provided below**. 
+   - Do NOT use generic advice. 
+   - For each technique, briefly explain *how* to do it based on the details in the text so the user actually understands the exercise.
+   - If the context doesn't contain specific techniques, provide one safe, general grounding exercise, but prioritize the documents.
 4. End with exactly:
    "If these feelings stay heavy for more than a couple of weeks, speaking with a
    counsellor — even just once — can make a real difference. iCall (9152987821)
